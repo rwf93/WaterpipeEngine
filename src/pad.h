@@ -3,7 +3,7 @@ struct padSystem
     u32 new_pad;
     u32 old_pad;
 
-    
+    struct padButtonStatus buttonStatus;    
 };
 
 extern struct padSystem* do_pad();

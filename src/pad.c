@@ -241,6 +241,7 @@ struct padSystem* do_pad()
 
         pPadSystem->new_pad = new_pad;
         pPadSystem->old_pad = old_pad;
+        pPadSystem->buttonStatus = buttons;
     }
 
     return pPadSystem;

@@ -19,6 +19,11 @@ int main()
         
         if(pPad->new_pad & PAD_LEFT)
             printf("LEFT\n");
+        
+        if(pPad->new_pad & PAD_UP)
+            printf("UP\n"); 
+        
+        printf("%d\n", pPad->buttonStatus.ljoy_h);
 
         end_pad(pPad);
     }

@@ -1,6 +1,6 @@
 EE_BIN = waterpipe.elf
 EE_OBJS = main.o
-EE_LIBS = -ldraw -lgraph -lmath3d -lpacket2 -ldma
+EE_LIBS = -lc -ldraw -lgraph -lmath3d -lpacket2 -ldma -ldebug
 
 clean: 
 	rm -f $(EE_BIN) $(EE_OBJS)

@@ -20,7 +20,7 @@ int main()
         if(pPad->new_pad & PAD_LEFT)
             printf("LEFT\n");
 
-        free(pPad);
+        end_pad(pPad);
     }
     return 0;    
 }

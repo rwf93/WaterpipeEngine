@@ -246,7 +246,7 @@ struct padSystem* do_pad()
     return pPadSystem;
 }
 
-void freePadSystem(struct padSystem* pad)
+void end_pad(struct padSystem* pad)
 {
     free(pad);
 }

@@ -1,5 +1,5 @@
 EE_BIN = waterpipe.elf
-EE_OBJS = main.o
+EE_OBJS = src/*.o
 
 EE_LIBS += -lc -ldebug -lmath3d
 EE_LIBS += -ldraw -lgraph -lpacket2 -ldma

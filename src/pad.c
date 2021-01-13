@@ -19,7 +19,9 @@
 #include <loadfile.h>
 #include <stdio.h>
 
-#include "libpad.h"
+#include <libpad.h>
+
+#include "pad.h"
 
 /*
  * Global var's
@@ -32,7 +34,6 @@ static char actAlign[6];
 static int actuators;
 
 int port, slot;
-
 /*
  * Local functions
  */
@@ -207,3 +208,46 @@ pad_init()
         SleepThread();
     }
 }
+
+u32 old_pad = 0;
+
+struct padSystem* do_pad()
+{
+    struct padButtonStatus buttons;
+    u32 paddata;
+    u32 new_pad;
+    int ret;
+    float fXOff;
+    float fYOff;
+    static float fXOffAccum = 0.0f;
+    static float fYOffAccum = 0.0f;
+    
+    struct padSystem* pPadSystem = (struct padSystem*)malloc(sizeof(struct padSystem));
+
+    do
+    {
+        ret=padGetState(port, slot);
+    } 
+    while((ret != PAD_STATE_STABLE) && (ret != PAD_STATE_FINDCTP1));
+    
+    ret = padRead(port, slot, &buttons);
+
+    if (ret != 0)
+    {
+        paddata = 0xffff ^ buttons.btns;
+
+        new_pad = paddata & ~old_pad;
+        old_pad = paddata;
+
+        pPadSystem->new_pad = new_pad;
+        pPadSystem->old_pad = old_pad;
+    }
+
+    return pPadSystem;
+}
+
+void freePadSystem(struct padSystem* pad)
+{
+    free(pad);
+}
+

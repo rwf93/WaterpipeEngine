@@ -7,41 +7,7 @@
 
 #include <libpad.h>
 
-extern int port, slot;
-extern int pad_init();
-u32 old_pad = 0;
-
-u32 do_pad()
-{
-    struct padButtonStatus buttons;
-	u32 paddata;
-	u32 new_pad;
-	int ret;
-	float fXOff;
-	float fYOff;
-	static float fXOffAccum = 0.0f;
-	static float fYOffAccum = 0.0f;
-
-    do
-    {
-		ret=padGetState(port, slot);
-	} 
-    while((ret != PAD_STATE_STABLE) && (ret != PAD_STATE_FINDCTP1));
-    
-    ret = padRead(port, slot, &buttons);
-
-    if (ret != 0)
-    {
-        paddata = 0xffff ^ buttons.btns;
-
-		new_pad = paddata & ~old_pad;
-		old_pad = paddata;
-        
-        return new_pad;
-    }
-
-    return new_pad;
-}
+#include "pad.h"
 
 int main()
 {
@@ -49,9 +15,12 @@ int main()
     
     while (1) 
     {
-        u32 pad = do_pad();
-        if(pad & PAD_LEFT)
+        struct padSystem* pPad = do_pad();
+        
+        if(pPad->new_pad & PAD_LEFT)
             printf("LEFT\n");
+
+        free(pPad);
     }
     return 0;    
 }

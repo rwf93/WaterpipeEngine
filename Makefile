@@ -1,12 +1,18 @@
 EE_BIN = waterpipe.elf
 EE_OBJS = main.o
-EE_LIBS = -lc -ldraw -lgraph -lmath3d -lpacket2 -ldma -ldebug
 
-clean: 
-	rm -f $(EE_BIN) $(EE_OBJS)
+EE_LIBS += -lc -ldebug -lmath3d
+EE_LIBS += -ldraw -lgraph -lpacket2 -ldma
+EE_LIBS += -lgskit_toolkit -lgskit
 
 all: $(EE_BIN)
 	$(EE_STRIP) --strip-all $(EE_BIN)
 
-include $(PS2SDK)/samples/Makefile.pref
-include $(PS2SDK)/samples/Makefile.eeglobal
+sim: 
+	/usr/bin/PCSX2 --elf=$(PWD)/$(EE_BIN) --nogui
+
+clean: 
+	rm -f $(EE_BIN) $(EE_OBJS)
+
+include Makefile.pref
+include Makefile.eeglobal

@@ -5,7 +5,6 @@ EE_LIBS += -lc -ldebug -lmath3d
 EE_LIBS += -ldraw -lgraph -lpacket2 -ldma
 EE_LIBS += -lgskit_toolkit -lgskit
 EE_LIBS += -lpad
-EE_LIBS += -llua -llualib
 
 all: $(EE_BIN)
 	$(EE_STRIP) --strip-all $(EE_BIN)

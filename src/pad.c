@@ -13,14 +13,10 @@
 # Distributed as is
 */
 
-#include <tamtypes.h>
-#include <kernel.h>
-#include <sifrpc.h>
-#include <loadfile.h>
-#include <stdio.h>
+#include "cbase.h"
 
+#include <loadfile.h>
 #include <libpad.h>
-#include <cstdlib>
 
 #include "pad.h"
 
@@ -212,18 +208,14 @@ pad_init()
 
 u32 old_pad = 0;
 
-padSystem* do_pad()
+struct padSystem* do_pad()
 {
     struct padButtonStatus buttons;
     u32 paddata;
     u32 new_pad;
     int ret;
-    float fXOff;
-    float fYOff;
-    static float fXOffAccum = 0.0f;
-    static float fYOffAccum = 0.0f;
     
-    padSystem* pPadSystem = (padSystem*)malloc(sizeof(padSystem));
+    struct padSystem* pPadSystem = (struct padSystem*)malloc(sizeof(struct padSystem));
 
     do
     {
@@ -248,7 +240,7 @@ padSystem* do_pad()
     return pPadSystem;
 }
 
-void end_pad(padSystem* pad)
+void end_pad(struct padSystem* pad)
 {
     free(pad);
 }

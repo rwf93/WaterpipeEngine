@@ -1,8 +1,6 @@
 #include <stdio.h>
 
-#include <tamtypes.h>
-#include <sifrpc.h>
-#include <unistd.h>
+#include "cbase.h"
 
 #include <libpad.h>
 
@@ -10,7 +8,8 @@
 
 int main()
 {
-    pad_init();   
+    pad_init();
+
     while (1) 
     {
         struct padSystem* pPad = do_pad();
@@ -19,8 +18,7 @@ int main()
             printf("LEFT\n");
         
         if(pPad->new_pad & PAD_UP)
-            printf("cry about it\n"); 
-        
+            printf("cry ab\n"); 
         end_pad(pPad);       
     }
     

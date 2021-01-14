@@ -6,7 +6,6 @@ struct padSystem
     struct padButtonStatus buttonStatus;    
 };
 
-extern struct padSystem* do_pad();
-extern void end_pad(struct padSystem* pad);
-extern void pad_init();
-extern struct padSystem* g_padSystem;
+padSystem* do_pad();
+void end_pad(padSystem* pad);
+void pad_init();

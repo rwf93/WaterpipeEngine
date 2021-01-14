@@ -2,7 +2,6 @@
 
 #include <tamtypes.h>
 #include <sifrpc.h>
-#include <debug.h>
 #include <unistd.h>
 
 #include <libpad.h>
@@ -11,8 +10,7 @@
 
 int main()
 {
-    pad_init();
-    
+    pad_init();   
     while (1) 
     {
         struct padSystem* pPad = do_pad();
@@ -21,15 +19,10 @@ int main()
             printf("LEFT\n");
         
         if(pPad->new_pad & PAD_UP)
-            printf("UP\n"); 
+            printf("cry about it\n"); 
         
-        end_pad(pPad);
-        
-        u32* ptr = 0;
-        u32 val;
-        val = *ptr;
-        printf("Not getting here... %i\n", val);
-
+        end_pad(pPad);       
     }
+    
     return 0;    
 }

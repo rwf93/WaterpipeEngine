@@ -20,6 +20,7 @@
 #include <stdio.h>
 
 #include <libpad.h>
+#include <cstdlib>
 
 #include "pad.h"
 
@@ -211,7 +212,7 @@ pad_init()
 
 u32 old_pad = 0;
 
-struct padSystem* do_pad()
+padSystem* do_pad()
 {
     struct padButtonStatus buttons;
     u32 paddata;
@@ -222,7 +223,7 @@ struct padSystem* do_pad()
     static float fXOffAccum = 0.0f;
     static float fYOffAccum = 0.0f;
     
-    struct padSystem* pPadSystem = (struct padSystem*)malloc(sizeof(struct padSystem));
+    padSystem* pPadSystem = (padSystem*)malloc(sizeof(padSystem));
 
     do
     {
@@ -247,7 +248,7 @@ struct padSystem* do_pad()
     return pPadSystem;
 }
 
-void end_pad(struct padSystem* pad)
+void end_pad(padSystem* pad)
 {
     free(pad);
 }

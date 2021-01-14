@@ -23,9 +23,13 @@ int main()
         if(pPad->new_pad & PAD_UP)
             printf("UP\n"); 
         
-        printf("%d\n", pPad->buttonStatus.ljoy_h);
-
         end_pad(pPad);
+        
+        u32* ptr = 0;
+        u32 val;
+        val = *ptr;
+        printf("Not getting here... %i\n", val);
+
     }
     return 0;    
 }

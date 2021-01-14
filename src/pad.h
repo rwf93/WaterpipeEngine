@@ -6,6 +6,6 @@ struct padSystem
     struct padButtonStatus buttonStatus;
 };
 
-struct padSystem* do_pad();
-void end_pad(struct padSystem* pad);
+padSystem* do_pad();
+void end_pad(padSystem* pad);
 void pad_init();

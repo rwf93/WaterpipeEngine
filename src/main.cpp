@@ -12,7 +12,7 @@ int main()
 
     while (1) 
     {
-        struct padSystem* pPad = do_pad();
+        padSystem* pPad = do_pad();
         
         if(pPad->new_pad & PAD_LEFT)
             printf("LEFT\n");

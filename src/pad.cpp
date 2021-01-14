@@ -208,14 +208,14 @@ pad_init()
 
 u32 old_pad = 0;
 
-struct padSystem* do_pad()
+padSystem* do_pad()
 {
     struct padButtonStatus buttons;
     u32 paddata;
     u32 new_pad;
     int ret;
     
-    struct padSystem* pPadSystem = (struct padSystem*)malloc(sizeof(struct padSystem));
+    padSystem* pPadSystem = (struct padSystem*)malloc(sizeof(struct padSystem));
 
     do
     {
@@ -240,7 +240,7 @@ struct padSystem* do_pad()
     return pPadSystem;
 }
 
-void end_pad(struct padSystem* pad)
+void end_pad(padSystem* pad)
 {
     free(pad);
 }

@@ -18,7 +18,7 @@ int main()
             printf("LEFT\n");
         
         if(pPad->new_pad & PAD_UP)
-            printf("cry ab\n"); 
+            printf("cry ab dox che\n"); 
         end_pad(pPad);       
     }
     

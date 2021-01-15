@@ -1,7 +1,7 @@
 #ifndef RENDER_H
 #define RENDER_H
 
-struct GSGLOBAL;
+typedef struct gsGlobal GSGLOBAL;
 
 class CGSKitRenderImpl
 {

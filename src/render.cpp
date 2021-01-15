@@ -1,9 +1,8 @@
-#include <cbase.h>
+#include "cbase.h"
 
-
-#include <cstdio>
 #include <gsKit.h>
 #include <dmaKit.h>
+#include <gsToolkit.h>
 
 #include "render.h"
 
@@ -29,7 +28,7 @@ void CGSKitRenderImpl::Initalize()
 
     gsKit_mode_switch(gsGlobal, GS_PERSISTENT);
 
-    gsKit_clear(gsGlobal, GS_SETREG_RGBAQ(0xFF,0xFF,0xFF,0x00,0x00));
+    gsKit_clear(gsGlobal, GS_SETREG_RGBAQ(rand() * 255, 0, 0, 0, 0));
 
     printf("Initalized GSGlobal at: %p\n", gsGlobal);
 }

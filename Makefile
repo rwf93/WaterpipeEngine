@@ -1,4 +1,4 @@
-EE_BIN = waterpipe.elf
+EE_BIN = packaged/WPIP.160.48
 EE_OBJS = src/main.o src/pad.o src/render.o
 
 EE_LIBS += -lc -ldebug -lmath3d
@@ -9,9 +9,9 @@ EE_LIBS += -lstdc++
 
 all: $(EE_BIN)
 	$(EE_STRIP) --strip-all $(EE_BIN)
-
+	mkisofs -o waterpipe.iso packaged
 sim: 
-	/usr/bin/PCSX2 --elf=$(PWD)/$(EE_BIN) --nogui
+	/usr/bin/PCSX2 --nogui waterpipe.iso
 
 clean: 
 	rm -f $(EE_BIN) $(EE_OBJS)

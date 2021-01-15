@@ -43,7 +43,6 @@ loadModules(void)
 {
     int ret;
 
-
     ret = SifLoadModule("rom0:SIO2MAN", 0, NULL);
     if (ret < 0) {
         printf("sifLoadModule sio failed: %d\n", ret);
@@ -215,7 +214,7 @@ padSystem* do_pad()
     u32 new_pad;
     int ret;
     
-    padSystem* pPadSystem = (struct padSystem*)malloc(sizeof(struct padSystem));
+    padSystem* pPadSystem = (padSystem*)malloc(sizeof(padSystem));
 
     do
     {

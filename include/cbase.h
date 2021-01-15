@@ -5,5 +5,9 @@
 #include <sifrpc.h>
 
 #include <cstdio>
+#include <cstring>
+
 #include <unistd.h>
 #include <stdlib.h>
+
+

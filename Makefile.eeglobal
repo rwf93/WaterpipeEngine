@@ -21,8 +21,8 @@ EE_CFLAGS := -D_EE -O2 -G0 -Wall $(EE_CFLAGS)
 EE_CXXFLAGS := -D_EE -O2 -G0 -Wall $(EE_CXXFLAGS)
 
 # Linker flags
-EE_LDFLAGS = -L $(PS2SDK)/ports/lib 
-EE_LDFLAGS += -L $(PS2DEV)/gsKit/lib 
+EE_LDFLAGS := -L$(PS2SDK)/ports/lib 
+EE_LDFLAGS += -L$(PS2DEV)/gsKit/lib 
 EE_LDFLAGS += -L$(PS2SDK)/ee/lib 
 # Assembler flags
 EE_ASFLAGS := -G0 $(EE_ASFLAGS)

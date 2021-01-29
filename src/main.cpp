@@ -1,10 +1,12 @@
 #include "cbase.h"
 
+#include <cstdio>
 #include <libpad.h>
 #include <loadfile.h>
 
-#include "pad.h"
+#include "engine.h"
 #include "render.h"
+#include "pad.h"
 #include "colours.h"
 
 #include <gsCore.h>
@@ -41,8 +43,8 @@ int main()
 {
     loadPrimaries();
 
-    pad_init();
-    
+    g_Engine->Initalize();
+
     RenderParamaters params;
 
     params.rele = D_CTRL_RELE_OFF;
@@ -54,22 +56,23 @@ int main()
     
     params.channel = DMA_CHANNEL_GIF;
 
-    params.mode = GS_PERSISTENT;
-
-
-    CGSKitRenderImpl engineRender;
-    engineRender.Initalize(params);    
+    params.mode = GS_PERSISTENT;  
     
+    g_Engine->engineRender->Initalize(params);
+
     FILE* fp = fopen("rom1:SYSTEM.CNF", "r");
 
     while (1) 
     {
-        engineRender.Render();
-        engineRender.Clear(Colour(255, 255, 255).getColorInt());
+        g_Engine->engineRender->Render();
+        g_Engine->engineRender->Clear(Colour(255, 255, 255).getColorInt());
 
-        padSystem* pPad = do_pad();
-//        printf("%s\n", a);
-        end_pad(pPad);       
+        g_Engine->Think();
+        
+        if (g_Engine->input->new_pad & PAD_LEFT)
+            printf("LEFT\n");
+
+        g_Engine->Thought();
     }
     
     return 0;    

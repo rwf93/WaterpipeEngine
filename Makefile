@@ -1,5 +1,5 @@
 EE_BIN = packaged/WPIP.160.48
-EE_OBJS = src/main.o src/pad.o src/render.o 
+EE_OBJS = src/main.o src/pad.o src/render.o src/engine.o
 
 EE_LIBS += -lc -ldebug -lmath3d
 EE_LIBS += -lgskit_toolkit -lgskit -ldmakit 

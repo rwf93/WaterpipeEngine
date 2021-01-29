@@ -9,6 +9,8 @@
 #include "pad.h"
 #include "colours.h"
 
+#include "math.h"
+
 #include <gsCore.h>
 
 void loadPrimaries()
@@ -64,15 +66,12 @@ int main()
 
     while (1) 
     {
-        g_Engine->engineRender->Render();
-        g_Engine->engineRender->Clear(Colour(255, 255, 255).getColorInt());
-
         g_Engine->Think();
-        
-        if (g_Engine->input->new_pad & PAD_LEFT)
-            printf("LEFT\n");
-
         g_Engine->Thought();
+
+        g_Engine->engineRender->Clear(Color(255, 255, 255).getColorInt());
+
+        g_Engine->engineRender->Render();
     }
     
     return 0;    

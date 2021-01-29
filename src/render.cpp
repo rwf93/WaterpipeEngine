@@ -4,6 +4,7 @@
 #include <dmaKit.h>
 #include <gsToolkit.h>
 
+#include "gsCore.h"
 #include "render.h"
 
 CGSKitRenderImpl::CGSKitRenderImpl()
@@ -16,21 +17,24 @@ CGSKitRenderImpl::~CGSKitRenderImpl()
     gsGlobal = nullptr;
 }
 
-void CGSKitRenderImpl::Initalize()
+void CGSKitRenderImpl::Initalize(RenderParamaters params)
 {
     gsGlobal = gsKit_init_global();
 
-    dmaKit_init(D_CTRL_RELE_OFF, D_CTRL_MFD_OFF, D_CTRL_STS_UNSPEC,
-		    D_CTRL_STD_OFF, D_CTRL_RCYC_8, 1 << DMA_CHANNEL_GIF);
+    dmaKit_init(params.rele, params.mfd, params.sts, 
+            params.std, params.rcyc, params.fastwaitchannels);
 
-    dmaKit_chan_init(DMA_CHANNEL_GIF);
+    dmaKit_chan_init(params.channel);
     gsKit_init_screen(gsGlobal);
 
-    gsKit_mode_switch(gsGlobal, GS_PERSISTENT);
-
-    gsKit_clear(gsGlobal, GS_SETREG_RGBAQ(rand() * 255, 0, 0, 0, 0));
+    gsKit_mode_switch(gsGlobal, params.mode);
 
     printf("Initalized GSGlobal at: %p\n", gsGlobal);
+}
+
+void CGSKitRenderImpl::Clear(int colour)
+{
+    gsKit_clear(gsGlobal, colour);
 }
 
 void CGSKitRenderImpl::Render()

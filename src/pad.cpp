@@ -14,8 +14,6 @@
 */
 
 #include "cbase.h"
-
-#include <loadfile.h>
 #include <libpad.h>
 
 #include "pad.h"
@@ -34,27 +32,6 @@ int port, slot;
 /*
  * Local functions
  */
-
-/*
- * loadModules()
- */
-static void
-loadModules(void)
-{
-    int ret;
-
-    ret = SifLoadModule("rom0:SIO2MAN", 0, NULL);
-    if (ret < 0) {
-        printf("sifLoadModule sio failed: %d\n", ret);
-        SleepThread();
-    }
-
-    ret = SifLoadModule("rom0:PADMAN", 0, NULL);
-    if (ret < 0) {
-        printf("sifLoadModule pad failed: %d\n", ret);
-        SleepThread();
-    }
-}
 
 /*
  * waitPadReady()
@@ -180,10 +157,6 @@ void
 pad_init()
 {
     int ret;
-
-    SifInitRpc(0);
-
-    loadModules();
 
     padInit(0);
 

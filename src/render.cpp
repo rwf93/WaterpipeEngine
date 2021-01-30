@@ -7,6 +7,9 @@
 #include "gsCore.h"
 #include "render.h"
 
+static CGSKitRenderImpl s_RenderAPI;
+CGSKitRenderImpl *g_RenderAPI = &s_RenderAPI;
+
 CGSKitRenderImpl::CGSKitRenderImpl()
 {
     gsGlobal = nullptr;

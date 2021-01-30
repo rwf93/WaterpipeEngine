@@ -1,8 +1,7 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
-class CGSKitRenderImpl;
-class padSystem;
+class CGSRenderImpl;
 
 class CEngine
 {
@@ -13,11 +12,14 @@ public:
     void Initalize();
 
     void Think();
+    void Frame();
     void Thought();
+    
+    CGSRenderImpl* getRenderAPI();
 
-    CGSKitRenderImpl* engineRender;    
-    padSystem* input;
-    float currentTime;
+    double			m_flCurrentTime;
+	float			m_flFrameTime;
+	double			m_flPreviousTime;
 };
 
 extern CEngine* g_Engine;

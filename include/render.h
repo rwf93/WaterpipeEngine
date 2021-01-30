@@ -26,4 +26,6 @@ private:
      GSGLOBAL *gsGlobal;
 };
 
+extern CGSKitRenderImpl *g_RenderAPI;
+
 #endif

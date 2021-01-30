@@ -60,8 +60,7 @@ int main()
 
     params.mode = GS_PERSISTENT;  
     
-    g_Engine->engineRender->Initalize(params);
-
+    g_RenderAPI->Initalize(params);
     FILE* fp = fopen("rom1:SYSTEM.CNF", "r");
 
     while (1) 
@@ -69,9 +68,10 @@ int main()
         g_Engine->Think();
         g_Engine->Thought();
 
-        g_Engine->engineRender->Clear(Color(255, 255, 255).getColorInt());
-
-        g_Engine->engineRender->Render();
+        g_RenderAPI->Clear(Color(255, 255, 255).getColorInt());
+        
+        g_Engine->Frame();
+        g_RenderAPI->Render();
     }
     
     return 0;    

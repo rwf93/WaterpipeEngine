@@ -11,30 +11,45 @@ CEngine *g_Engine = &s_Engine;
 
 CEngine::CEngine()
 {
-    engineRender = nullptr;
-    engineRender = new CGSKitRenderImpl();
+    
 }
 
 CEngine::~CEngine()
 {
-    delete engineRender;
-    engineRender = nullptr;
+    
+}
+
+CGSKitRenderImpl* getRenderAPI()
+{
+    return g_RenderAPI;
 }
 
 void CEngine::Initalize()
 {
     pad_init();
-    printf("Created pad structure\nCEngine: %p\nCGSKitRenderImpl: %p\n", this, engineRender);
+    printf("Created pad structure\nCEngine: %p\nRenderAPI: %p\n", this, this);
 }
 
 void CEngine::Think()
 {
-    currentTime++;
-    
-    input = do_pad();
+
+}
+
+void CEngine::Frame()
+{
+    m_flCurrentTime++;
+
+    float dt = m_flCurrentTime - m_flPreviousTime;
+
+    m_flPreviousTime = m_flCurrentTime;
+
+    m_flFrameTime += dt;
+
+    if ( m_flFrameTime < 0.0f )
+		return;
 }
 
 void CEngine::Thought()
 {
-    end_pad(input);
+    
 }

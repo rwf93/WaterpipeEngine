@@ -63,12 +63,12 @@ int main()
     g_RenderAPI->Initalize(params);
     FILE* fp = fopen("rom1:SYSTEM.CNF", "r");
 
-    while (1) 
+    while (true) 
     {
         g_Engine->Think();
         g_Engine->Thought();
 
-        g_RenderAPI->Clear(Color(255, 255, 255).getColorInt());
+        g_RenderAPI->Clear(Color(127, 127, 127).getColorInt());
         
         g_Engine->Frame();
         g_RenderAPI->Render();

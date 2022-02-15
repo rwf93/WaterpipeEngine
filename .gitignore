@@ -1,12 +1,7 @@
 *.elf
 *.o
-compile_commands.json
 *.iso
 
-*.bmp
-*.png
-*.fnt
-*.bin
-*.png
-
 packaged/WPIP.160.48
+
+.vscode

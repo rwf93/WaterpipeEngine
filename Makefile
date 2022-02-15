@@ -1,11 +1,10 @@
-EE_BIN = packaged/WPIP.160.48
-EE_OBJS = src/main.o src/pad.o src/render.o src/engine.o
+EE_BIN = packaged/SLUS_213.59
+EE_OBJS = src/main.o
 
 EE_LIBS += -lc -ldebug -lmath3d
 EE_LIBS += -lgskit_toolkit -lgskit -ldmakit 
 EE_LIBS += -ldraw -lgraph -lpacket2 -ldma 
 EE_LIBS += -lpad
-EE_LIBS += -lstdc++
 
 all: $(EE_BIN)
 	$(EE_STRIP) --strip-all $(EE_BIN)

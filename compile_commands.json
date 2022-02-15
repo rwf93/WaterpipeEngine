@@ -1,0 +1,27 @@
+[
+ {
+  "directory": "/home/eclipse/WaterpipeEngine",
+  "arguments": [
+   "mips64r5900el-ps2-elf-gcc",
+   "-D_EE",
+   "-O2",
+   "-G0",
+   "-Wall",
+   "-I/usr/local/ps2dev/ps2sdk/ports/include",
+   "-I/usr/local/ps2dev/gsKit/include",
+   "-I/usr/local/ps2dev/ps2sdk/ee/include",
+   "-I/usr/local/ps2dev/ps2sdk/common/include",
+   "-Iinclude",
+   "-I/usr/local/ps2dev/ps2sdk/ports/include",
+   "-I/usr/local/ps2dev/gsKit/include",
+   "-I/usr/local/ps2dev/ps2sdk/ee/include",
+   "-I/usr/local/ps2dev/ps2sdk/common/include",
+   "-Iinclude",
+   "-c",
+   "src/main.c",
+   "-o",
+   "src/main.o"
+  ],
+  "file": "src/main.c"
+ }
+]
